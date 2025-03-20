@@ -2,8 +2,68 @@
 name: quagga
 reconfigureEndpoint: "/quagga/service/reconfigure" # Controller-wide reconfigure endpoint (can be overwritten)
 resources:
-
   # quagga resources
+
+  - name: OSPFInterface
+    filename: ospf_interface
+    monad: interface
+    endpoints:
+      add: "/quagga/ospfsettings/addInterface"
+      get: "/quagga/ospfsettings/getInterface"
+      update: "/quagga/ospfsettings/setInterface"
+      delete: "/quagga/ospfsettings/delInterface"
+    attrs:
+      - name: Enabled
+        type: string
+        key: enabled
+      - name: InterfaceName
+        type: string
+        key: interfacename
+      - name: AuthType
+        type: SelectedMap
+        key: authtype
+      - name: AuthKey
+        type: string
+        key: authkey
+      - name: AuthKeyID
+        type: string
+        key: authkey_id
+      - name: Area
+        type: string
+        key: area
+      - name: Cost
+        type: string
+        key: cost
+      - name: CostDemoted
+        type: string
+        key: cost_demoted
+      - name: CarpDependOn
+        type: string
+        key: carp_depend_on
+      - name: HelloInterval
+        type: string
+        key: hellointerval
+      - name: DeadInterval
+        type: string
+        key: deadinterval
+      - name: RetransmitInterval
+        type: string
+        key: retransmitinterval
+      - name: RetransmitDelay
+        type: string
+        key: retransmitdelay
+      - name: TransmitDelay
+        type: string
+        key: transmitdelay
+      - name: Priority
+        type: string
+        key: priority
+      - name: BFD
+        type: string
+        key: bfd
+      - name: NetworkType
+        type: SelectedMap
+        key: networktype
 
   - name: BGPNeighbor
     filename: bgp_neighbor
